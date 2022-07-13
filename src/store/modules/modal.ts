@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ModalState } from "../../interfaces/modal";
 
 const initialState: ModalState = {
@@ -6,7 +6,7 @@ const initialState: ModalState = {
   pokemon: {
     id: "",
     name: "",
-    abilities: [],
+    abilities: { name1: "", name2: "" },
     back_default: "",
     back_shiny: "",
     front_default: "",
@@ -19,7 +19,7 @@ export const modal = createSlice({
   name: "modal",
   initialState,
   reducers: {
-    openIsModal: (state, action) => {
+    openIsModal: (state, action: PayloadAction<any>) => {
       state.isModal = true;
       state.pokemon = action.payload;
     },
