@@ -6,7 +6,7 @@ interface initialStateType {
 }
 function find(): themeOption {
   const theme = window.localStorage.getItem("theme");
-  if (theme != "dark" || theme != "light" ) return "light";
+  if (theme != "dark" || !theme ) return "light";
   if (theme) return theme as themeOption;
   return "dark";
 }
