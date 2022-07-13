@@ -3,7 +3,7 @@ import pokedex, { cache, getPokedex } from "../../store/modules/pokedex";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { Containar } from "./styles";
 import { Header } from "../header/Header";
-import { Pagination } from "../pagination/Pagiantion";
+import { Pagination } from "../pagination/Pagination";
 import Modal from "react-modal";
 import { Card } from "../card/Card";
 import { invertTheme } from "../../store/modules/theme";
@@ -40,7 +40,6 @@ function PokemonList() {
           currentPage={pokeapi.page - 1}
           totalCount={151}
           registerPorPage={10}
-          onChangePage={getPokedex}
         />
       </Containar>
     </>
