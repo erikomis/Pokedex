@@ -45,7 +45,6 @@ export function Card({ pokemon }: PokemonProps) {
       <ModalPokemon
         pokemon={pokemon}
         isOpen={modal.isModal}
-        onRequestClose={() => closeIsmodal()}
       />
     </>
   );
