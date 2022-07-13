@@ -5,7 +5,6 @@ interface PaginationProps {
   totalCount: number;
   registerPorPage?: number;
   currentPage?: number;
-  onChangePage: (page: number) => void;
 }
 
 function generetedPageArray(from: number, to: number) {
@@ -21,7 +20,6 @@ export function Pagination({
   totalCount,
   currentPage = 1,
   registerPorPage = 10,
-  onChangePage,
 }: PaginationProps) {
   const lastPage = Math.ceil(totalCount / registerPorPage);
 
@@ -29,7 +27,7 @@ export function Pagination({
     currentPage > 1
       ? generetedPageArray(currentPage - 1 - sibligsCount, currentPage - 1)
       : [];
-      
+
   const nextPage =
     currentPage < lastPage
       ? generetedPageArray(
@@ -40,37 +38,19 @@ export function Pagination({
 
   return (
     <Container>
-      {currentPage > 1 + sibligsCount && (
-        <PaginationItem onChangePage={onChangePage} numberPage={1} />
-      )}
+      {currentPage > 1 + sibligsCount && <PaginationItem numberPage={1} />}
       {previousPage.length > 0 &&
         previousPage.map((page) => {
-          return (
-            <PaginationItem
-              key={page}
-              onChangePage={onChangePage}
-              numberPage={page}
-            />
-          );
+          return <PaginationItem key={page} numberPage={page} />;
         })}
-      <PaginationItem
-        onChangePage={onChangePage}
-        numberPage={currentPage}
-        isCurrent
-      />
+      <PaginationItem numberPage={currentPage} isCurrent />
       {nextPage.length > 0 &&
         nextPage.map((page) => {
-          return (
-            <PaginationItem
-              onChangePage={onChangePage}
-              numberPage={page}
-              key={page}
-            />
-          );
+          return <PaginationItem numberPage={page} key={page} />;
         })}
       {currentPage + sibligsCount < lastPage && (
-        <PaginationItem numberPage={lastPage} onChangePage={onChangePage} />
+        <PaginationItem numberPage={lastPage} />
       )}
-    </ Container>
+    </Container>
   );
 }
