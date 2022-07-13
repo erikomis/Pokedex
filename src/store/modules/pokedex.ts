@@ -25,17 +25,19 @@ export const getPokedex = createAsyncThunk(
             id,
             type: types[0].type.name,
             name,
-            abilities: [abilities[0]?.ability.name, abilities[1]?.ability.name],
+            abilities: {
+              name1: abilities[0]?.ability.name,
+              name2: abilities[1]?.ability.name,
+            },
             ...sprites,
           };
         }
       );
 
-      console.log(pokemonMap)
       return { page, pokedex: pokemonMap };
     } catch (e: any) {
       e.message;
-      console.log(e.message)
+      console.log(e.message);
       return {
         pokedex: [],
         page,
@@ -50,7 +52,7 @@ export const pokeapi = createSlice({
   reducers: {
     orderByName: (state, action) => {
       const test = JSON.parse(JSON.stringify(action.payload));
-      test.sort((a, b) => {
+      test.sort((a: any, b: any) => {
         if (a.name > b.name) return 1;
         if (a.name < b.name) return -1;
         return 0;
