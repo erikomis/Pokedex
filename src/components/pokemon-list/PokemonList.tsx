@@ -30,7 +30,7 @@ function PokemonList() {
       <Header />
       <Containar>
         <div className="grid">
-          {pokeapi.pokedex.length > 1 ? (
+          {pokeapi.pokedex.length > 0 ? (
             pokeapi.pokedex.map((poke) => <Card pokemon={poke} key={poke.id} />)
           ) : (
             <div>sem pokemons</div>
